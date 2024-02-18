@@ -23,20 +23,38 @@ public class PullRequestControllerTest {
     }
 
     @Test
-    public void testGetPullRequestInfo() {
+    public void testGetOnePullRequest() {
         // Configurar o comportamento esperado do GitHubService mockado
         String owner = "fidelisfelipe";
         String repo = "pullrequest-boot";
         int pullRequestNumber = 123;
         Object expectedResponse = new Object(); // Suponha que o objeto de resposta esperado seja um Object qualquer
 
-        when(gitHubService.getPullRequestInfo(owner, repo, pullRequestNumber)).thenReturn(expectedResponse);
+        when(gitHubService.getOnePullRequest(owner, repo, pullRequestNumber)).thenReturn(expectedResponse);
 
         // Chamar o método do controlador e verificar se o resultado é o esperado
-        Object actualResponse = pullRequestController.getPullRequestInfo(owner, repo, pullRequestNumber);
+        Object actualResponse = pullRequestController.getOnePullRequest(owner, repo, pullRequestNumber);
         assertEquals(expectedResponse, actualResponse);
 
         // Verificar se o método do serviço foi chamado com os parâmetros corretos
-        verify(gitHubService).getPullRequestInfo(owner, repo, pullRequestNumber);
+        verify(gitHubService).getOnePullRequest(owner, repo, pullRequestNumber);
+    }
+
+    @Test
+    public void testGetAllPullRequest() {
+        // Configurar o comportamento esperado do GitHubService mockado
+        String owner = "fidelisfelipe";
+        String repo = "pullrequest-boot";
+
+        Object expectedResponse = new Object(); // Suponha que o objeto de resposta esperado seja um Object qualquer
+
+        when(gitHubService.getAllPullRequest(owner, repo)).thenReturn(expectedResponse);
+
+        // Chamar o método do controlador e verificar se o resultado é o esperado
+        Object actualResponse = pullRequestController.getAllPullRequest(owner, repo);
+        assertEquals(expectedResponse, actualResponse);
+
+        // Verificar se o método do serviço foi chamado com os parâmetros corretos
+        verify(gitHubService).getAllPullRequest(owner, repo);
     }
 }

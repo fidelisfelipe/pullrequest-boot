@@ -16,7 +16,10 @@ public class GitHubService {
         this.gitHubApiClient = gitHubApiClient;
     }
 
-    public Object getPullRequestInfo(String owner, String repo, int pullRequestNumber) {
-        return gitHubApiClient.getPullRequestInfo(owner, repo, pullRequestNumber);
+    public Object getOnePullRequest(String owner, String repo, int pullRequestNumber) {
+        return gitHubApiClient.getOnePullRequest(owner, repo, pullRequestNumber);
+    }
+    public Object getAllPullRequest(String owner, String repo) {
+        return gitHubApiClient.getAllPullRequest(owner, repo);
     }
 }

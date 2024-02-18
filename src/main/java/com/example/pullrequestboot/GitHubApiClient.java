@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "github-api", url = "https://api.github.com")
 public interface GitHubApiClient {
 
+    @GetMapping("/repos/{owner}/{repo}/pulls")
+    Object getAllPullRequest(@PathVariable("owner") String owner,
+                              @PathVariable("repo") String repo);
+
     @GetMapping("/repos/{owner}/{repo}/pulls/{pullRequestNumber}")
-    Object getPullRequestInfo(@PathVariable("owner") String owner,
+    Object getOnePullRequest(@PathVariable("owner") String owner,
                               @PathVariable("repo") String repo,
                               @PathVariable("pullRequestNumber") int pullRequestNumber);
 }

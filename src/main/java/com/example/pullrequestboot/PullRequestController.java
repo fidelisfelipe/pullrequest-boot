@@ -14,9 +14,15 @@ public class PullRequestController {
     }
 
     @GetMapping("/pull-request/{owner}/{repo}/{pullRequestNumber}")
-    public Object getPullRequestInfo(@PathVariable String owner,
+    public Object getOnePullRequest(@PathVariable String owner,
                                      @PathVariable String repo,
                                      @PathVariable int pullRequestNumber) {
-        return gitHubService.getPullRequestInfo(owner, repo, pullRequestNumber);
+        return gitHubService.getOnePullRequest(owner, repo, pullRequestNumber);
+    }
+
+    @GetMapping("/pull-request/{owner}/{repo}")
+    public Object getAllPullRequest(@PathVariable String owner,
+                                     @PathVariable String repo) {
+        return gitHubService.getAllPullRequest(owner, repo);
     }
 }

@@ -4,6 +4,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Map;
+
 /**
  * Interface para definir a chamada ao serviço da API do GitHub usando Feign
  */
@@ -15,7 +17,7 @@ public interface GitHubApiClient {
                               @PathVariable("repo") String repo);
 
     @GetMapping("/repos/{owner}/{repo}/pulls/{pullRequestNumber}")
-    Object getOnePullRequest(@PathVariable("owner") String owner,
-                              @PathVariable("repo") String repo,
-                              @PathVariable("pullRequestNumber") int pullRequestNumber);
+    PullRequest getOnePullRequest(@PathVariable("owner") String owner,
+                                          @PathVariable("repo") String repo,
+                                          @PathVariable("pullRequestNumber") int pullRequestNumber);
 }

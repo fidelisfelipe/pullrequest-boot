@@ -8,5 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 public class PullRequest {
     private String body;
+    private String title;
+    private String state;
+    private String authorAssociation;
+    private int commits;
+    private int additions;
+    private int deletions;
     private int changedFiles;
 }
